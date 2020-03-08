@@ -15,11 +15,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Это стартовая страница нашего приложения" });
 });
 
-app.get("/news", (req,res) =>{
-	res.json({message:"hello world"});
-})
+
+require("./app/routes/deals.routes.js")(app);
 
 // set port, listen for requests
-app.listen(3001, () => {
-  console.log("Сервер запущен на 3001 порту");
+const PORT = process.env.PORT || 5003;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
